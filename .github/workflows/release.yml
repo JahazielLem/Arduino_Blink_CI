@@ -28,7 +28,7 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install arduino:avr
 
-      # Finally, we compile the sketch, using the FQBN that was set
+      # Finally, we compile the sketch, using the FQBN that was set Aaaaaa
       # in the build matrix.
       - name: Compile Sketch
         run: |
