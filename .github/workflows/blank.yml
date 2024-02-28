@@ -30,10 +30,14 @@ jobs:
         run: echo Hello, world!
 
       - name: Download arduino CLI
-        run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
-
-      - name: Running compile
-        run: arduino-cli version
+        uses: arduino/setup-arduino-cli@v1.1.2
+        with:
+          version: 0.1.x
+ 
+      # Finally, we compile the sketch, using the FQBN that was set
+      # in the build matrix.
+      - name: Compile Sketch
+        run: arduino-cli compile --fqbn arduino:avr:uno -v --build-path bliked
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
