@@ -21,13 +21,20 @@ jobs:
       - name: Setup Arduino CLI
         uses: arduino/setup-arduino-cli@v1
 
+      # We then install the platform, which one will be determined
+      # dynamically by the build matrix.
+      - name: Install platform
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+
       # Finally, we compile the sketch, using the FQBN that was set
       # in the build matrix.
       - name: Compile Sketch
         run: |
           pwd
           cd blink
-          arduino-cli compile --fqbn arduino:avr:uno -v --build-path  ../blinked
+          arduino-cli compile --fqbn arduino:vr:uno -v --build-path  ../blinked
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
