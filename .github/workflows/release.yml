@@ -34,7 +34,7 @@ jobs:
         run: |
           pwd
           cd blink
-          arduino-cli compile --fqbn arduino:vr:uno -v --build-path  ../blinked
+          arduino-cli compile --fqbn arduino:avr:uno -v --build-path  ../blinked
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
